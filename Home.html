@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+
+<html ng-app="pages" lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link data-require="bootstrap-css@2.3.2" data-semver="2.3.2" rel="stylesheet" href="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" />
+    <script data-require="angular.js@1.1.5" data-semver="1.2.5" src="http://code.angularjs.org/1.2.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular-route.min.js"></script>
+    <script data-require="angular-ui-bootstrap@0.3.0" data-semver="0.3.0" src="http://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-0.3.0.min.js"></script>
+    <link rel="stylesheet" href="bootstrap.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+    <title></title>
+</head>
+<body ng-controller="PageController">
+    <div ng-controller="ButController">
+        <button type="submit" color="default" size="lg">Lg default</button>
+        <button type="submit" color="success" size="md">Md success</button>
+        <button type="submit" color="info" size="sm">Sm info</button>
+        <button type="submit" color="warning" size="xs">Xs warning</button>
+
+        <button type="submit" color="danger" size="md">Danger</button>
+        <button type="submit" color="link" size="md">Link</button>
+        <button type="submit" size="md">Submit</button>
+    </div>
+
+    <div data-pagination="" data-num-pages="1000"
+         data-current-page="currentPage" class="btn-link" data-max-size="maxSize"
+         data-boundary-links="true"></div>
+    <div ng-controller="AppCtrl" class="container">
+        <table class="table">
+            <thead>
+                <tr bgcolor="#DAD3D3">
+                    <td>
+                        <b><font color="#FFFFFF">Name</font></b>
+                    </td>
+                    <td>
+                        <b><font color="#FFFFFF">Email</font></b>
+                    </td>
+                </tr>
+            </thead>
+            <tbody ng-repeat="item in items" ng-class-odd="'odd'" ng-class-even="'even'">
+                <tr ng-click="toggleDetail($index)">
+                    <td>{{item.name}}</td>
+                    <td>{{item.email}}</td>
+                </tr>
+                <tr>
+                    <td colspan="2" ng-show="activePosition == $index">{{item.details}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <ul class="nav">
+                    <li><a href="#Content"> Content </a></li>
+                    <li><a href="#About"> About </a></li>
+                </ul>
+            </div>
+            <div class="col-md-9">
+                <div ng-view></div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
